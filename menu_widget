@@ -1,0 +1,23 @@
+from tkinter import *
+
+master = Tk()
+master.title("Menu")
+
+menubar= Menu(master)  #menu déclaré
+
+def hello():
+    print("salamo alikom")
+def help():
+    master['bg']='red'
+
+filemenu= Menu(menubar)# si on écrit filemenu= Menu(menubar, tearoff=0) les tirés ne s'affiche pas en haut du menu
+filemenu.add_command(label="open")
+filemenu.add_command(label="hello",command=hello)# item avec commande
+filemenu.add_command(label="close", command=master.quit)
+filemenu.add_command(label="help",command=help)
+
+menubar.add_cascade(label="file",menu=filemenu) #empiler les items du menu=submenu
+
+master.config(menu=menubar) #configure l'affichage du menu
+
+master.mainloop()
